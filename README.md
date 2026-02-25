@@ -45,7 +45,20 @@ php artisan key:generate
 
 ### Nuxt環境構築
 1. twitter-frontendディレクトリに移動
-2. 開発サーバーを起動
+2. モジュールをインストール
+```bash
+npm install --save nuxt firebase
+```
+3. .envを作成して以下を記述する
+```bash
+NUXT_PUBLIC_FIREBASE_API_KEY={firebaseのAPIキー}
+NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN={firebaseの認証ドメイン}
+NUXT_PUBLIC_FIREBASE_PROJECT_ID={firebaseのプロジェクトID}
+NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET={firebaseのバケット}
+NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID={firebaseの送信ID}
+NUXT_PUBLIC_FIREBASE_APP_ID={firebaseのアプリD}
+```
+4. 開発サーバーを起動
 ```bash
 npm run dev
 ```
@@ -61,4 +74,5 @@ npm run dev
 ## URL
 - 開発環境：http://localhost:3000/
 - phpMyAdmin：http://localhost:8080/
+
 
