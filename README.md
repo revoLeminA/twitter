@@ -1,4 +1,4 @@
-# フリマアプリ
+# Twitter風SNSアプリ
 
 ## 環境構築
 1. クローン
@@ -61,3 +61,4 @@ npm run dev
 ## URL
 - 開発環境：http://localhost:3000/
 - phpMyAdmin：http://localhost:8080/
+
