@@ -2,19 +2,20 @@
 
 ## 環境構築
 1. クローン
-```bash
+```コマンドライン
 git clone git@github.com:revoLeminA/twitter.git
 ```
 
 ### Laravel環境構築
 1. twitter-backendディレクトリに移動
 2. ビルド
-```bash
+```コマンドライン
 docker-compose up -d --build
 ```
 ＊ MySQLは、OSによって起動しない場合があるのでそれぞれのPCに合わせてdocker-compose.ymlファイルを編集してください。
+
 3. コンテナ内にログイン
-```bash
+```コマンドライン
 docker-compose exec php bash
 ```
 4. 必要なパッケージをインストール
@@ -22,7 +23,7 @@ docker-compose exec php bash
 composer install
 ```
 5. .env.exampleファイルをコピーして.envを作成し、環境変数を構築
-```bash
+```.env
 // 前略
 
 DB_CONNECTION=mysql
@@ -32,13 +33,18 @@ DB_DATABASE=laravel_db
 DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 
-// 後略
+// 中略
+
+FIREBASE_CREDENTIALS=storage/app/firebase/firebase_credentials.json
 ```
-6. マイグレーションを実行
+6. Firebaseの秘密鍵をダウンロード
+- Jsonフォーマットの秘密鍵をプロジェクトコンソールのサービスアカウントタブからダウンロード
+- ダウンロードできたら、ファイル名をfirebase-auth.jsonに変更し、storage/app/配下に設置
+7. マイグレーションを実行
 ```bash
 php artisan migrate
 ```
-7. php artisan migrate
+8. php artisan migrate
 ```bash
 php artisan key:generate
 ```
@@ -46,11 +52,11 @@ php artisan key:generate
 ### Nuxt環境構築
 1. twitter-frontendディレクトリに移動
 2. モジュールをインストール
-```bash
-npm install --save nuxt firebase
+```コマンドライン
+npm install --save nuxt firebase vee-validate yup
 ```
 3. .envを作成して以下を記述する
-```bash
+```.env
 NUXT_PUBLIC_FIREBASE_API_KEY={firebaseのAPIキー}
 NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN={firebaseの認証ドメイン}
 NUXT_PUBLIC_FIREBASE_PROJECT_ID={firebaseのプロジェクトID}
@@ -74,5 +80,3 @@ npm run dev
 ## URL
 - 開発環境：http://localhost:3000/
 - phpMyAdmin：http://localhost:8080/
-
-
